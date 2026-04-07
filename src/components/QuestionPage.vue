@@ -154,7 +154,7 @@ const goBack = () => {
       <div class="options-area">
         <button
           v-for="(option, index) in currentQuestion().options"
-          :key="index"
+          :key="`q${currentIndex}-opt${index}`"
           class="option-button"
           :class="{ selected: getSelectedIndex() === index }"
           @click="selectOption(option, index)"
@@ -163,14 +163,17 @@ const goBack = () => {
         </button>
       </div>
 
-      <!-- 뒤로가기 버튼 (선택지 아래) -->
-      <button
-        v-if="currentIndex > 0"
-        class="back-button"
-        @click="goBack"
-      >
-        <span class="back-arrow">&lt;</span>
-      </button>
+      <!-- 뒤로가기 버튼 영역 (항상 공간 차지, 첫 질문에서는 투명) -->
+      <div class="back-button-area">
+        <button
+          class="back-button"
+          :class="{ invisible: currentIndex === 0 }"
+          @click="goBack"
+          :disabled="currentIndex === 0"
+        >
+          <span class="back-arrow">&lt;</span>
+        </button>
+      </div>
     </div>
 
     <!-- 하단 진행 표시 -->
@@ -191,11 +194,10 @@ const goBack = () => {
 
 <style scoped>
 .question-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 52px);
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  padding-bottom: 140px;
+  padding: 20px 20px 140px;
   background: linear-gradient(180deg, #FFF9F0 0%, #FFE8D0 100%);
   position: relative;
 }
@@ -259,7 +261,13 @@ const goBack = () => {
   color: white;
 }
 
-/* 뒤로가기 버튼 (선택지 아래 왼쪽) */
+/* 뒤로가기 버튼 영역 */
+.back-button-area {
+  margin-top: 20px;
+  padding-left: 20px;
+  height: 44px;
+}
+
 .back-button {
   width: 44px;
   height: 44px;
@@ -272,13 +280,16 @@ const goBack = () => {
   justify-content: center;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(255, 140, 66, 0.3);
-  margin-top: 20px;
-  margin-left: 20px;
 }
 
-.back-button:hover {
+.back-button:hover:not(.invisible) {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(255, 140, 66, 0.4);
+}
+
+.back-button.invisible {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .back-arrow {
@@ -294,7 +305,7 @@ const goBack = () => {
   left: 0;
   right: 0;
   background: white;
-  padding: 20px 20px 28px;
+  padding: 20px 40px 28px;
   border-top: 1px solid #FFE8D0;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
@@ -308,7 +319,6 @@ const goBack = () => {
   border-radius: 20px;
   padding: 8px 16px;
   margin-bottom: 16px;
-  margin-left: 20px;
 }
 
 .progress-number {
@@ -342,8 +352,7 @@ const goBack = () => {
 
 .hamster-walk {
   position: relative;
-  max-width: 500px;
-  margin: 0 auto;
+  width: 100%;
   padding-top: 35px;
 }
 
@@ -394,6 +403,10 @@ const goBack = () => {
 
   .hamster-icon {
     font-size: 24px;
+  }
+
+  .bottom-progress {
+    padding: 20px 20px 28px;
   }
 }
 </style>

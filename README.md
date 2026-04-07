@@ -1,5 +1,61 @@
-# Vue 3 + Vite
+# 🐹 햄토리 테스트
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> 나와 닮은 햄토리 캐릭터는 누구일까?
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+10가지 질문으로 알아보는 나의 햄토리 유형 테스트입니다.
+
+## ✨ 미리보기
+
+```
+🏠 시작 페이지  →  📝 질문 (10문항)  →  🎉 결과 확인
+```
+
+## 🎯 결과 유형
+
+| 캐릭터 | 유형 |
+|--------|------|
+| 🐹 햄토리 | 순수하지만 중심이 되는 타입 |
+| 🍙 얌냠이 | 먹는 게 최우선인 타입 |
+| 👑 대장 | 강하지만 감정 기복 있는 리더 타입 |
+| 📚 범생이 | 지식 기반 해결형 타입 |
+| 💤 쿨쿨이 | 거의 항상 자는 느긋한 타입 |
+
+## 🛠 기술 스택
+
+- **Frontend**: Vue 3 + Vite
+- **Styling**: Scoped CSS
+- **State**: Vue Composition API (ref, computed)
+
+## 🚀 실행 방법
+
+```bash
+# 패키지 설치
+npm install
+
+# 개발 서버 실행
+npm run dev
+
+# 빌드
+npm run build
+```
+
+## 📁 프로젝트 구조
+
+```
+src/
+├── App.vue              # 메인 앱 (페이지 상태 관리)
+├── components/
+│   ├── StartPage.vue    # 시작 화면
+│   ├── QuestionPage.vue # 질문 페이지 (10문항)
+│   └── ResultPage.vue   # 결과 화면
+└── style.css            # 글로벌 스타일
+```
+
+## 🐾 만든 이유
+
+어릴 때 즐겨보던 방가방가 햄토리를 떠올리며,
+간단하고 귀여운 성격 테스트를 만들어보고 싶었습니다.
+
+---
+
+햄토리처럼 귀엽고 즐거운 하루 보내세요! 🌻

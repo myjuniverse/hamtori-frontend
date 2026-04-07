@@ -17,18 +17,23 @@ body {
   min-height: 100vh;
 }
 
-/* 스크롤바 스타일 */
+/* 스크롤바 스타일 - 스크롤 시에만 표시 */
+html {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFB088;
-  border-radius: 3px;
+  background: rgba(255, 176, 136, 0.5);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {

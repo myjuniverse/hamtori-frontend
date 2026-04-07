@@ -32,7 +32,7 @@ const handleStart = () => {
 
       <!-- 푸터 -->
       <p class="footer-text">
-        총 12문항 · 약 2분 소요
+        총 10문항 · 약 2분 소요
       </p>
     </div>
   </div>
@@ -40,7 +40,7 @@ const handleStart = () => {
 
 <style scoped>
 .start-page {
-  min-height: 100vh;
+  min-height: calc(100vh - 52px);
   display: flex;
   align-items: center;
   justify-content: center;
