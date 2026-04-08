@@ -18,8 +18,9 @@ const scores = ref({
   group5: 0
 })
 
-// 결과 캐릭터
+// 결과 캐릭터 (그룹 + 세분화 인덱스)
 const resultCharacter = ref(null)
+const resultSubIndex = ref(0)
 
 // 퀴즈 리셋 키 (테스트하기 탭 클릭 시 새로 시작)
 const quizKey = ref(0)
@@ -39,12 +40,26 @@ const startQuiz = () => {
   currentPage.value = 'test'
 }
 
-const finishQuiz = (finalScores) => {
+const finishQuiz = (result) => {
+  const { scores: finalScores, subScores } = result
+
+  // 1. 가장 높은 그룹 찾기
   scores.value = finalScores
   const maxGroup = Object.entries(finalScores).reduce((a, b) =>
     a[1] > b[1] ? a : b
   )[0]
   resultCharacter.value = maxGroup
+
+  // 2. 세분화 점수로 캐릭터 인덱스 결정 (0, 1, 2)
+  const { sub1, sub2, sub3 } = subScores
+  if (sub1 >= sub2 && sub1 >= sub3) {
+    resultSubIndex.value = 0  // 첫번째 캐릭터
+  } else if (sub2 >= sub1 && sub2 >= sub3) {
+    resultSubIndex.value = 1  // 두번째 캐릭터
+  } else {
+    resultSubIndex.value = 2  // 세번째 캐릭터
+  }
+
   currentPage.value = 'result'
 }
 
@@ -83,6 +98,7 @@ const activeTab = () => currentPage.value === 'result' ? 'test' : currentPage.va
     <ResultPage
       v-else-if="currentPage === 'result'"
       :character="resultCharacter"
+      :subIndex="resultSubIndex"
       :scores="scores"
       @restart="restartQuiz"
     />

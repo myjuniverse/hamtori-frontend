@@ -11,7 +11,7 @@ const handleStart = () => {
     <div class="content">
       <!-- 로고/캐릭터 영역 -->
       <div class="logo-area">
-        <div class="character-icon">🐹</div>
+        <img src="/hamtori.png" alt="햄토리" class="character-icon" />
         <h1 class="title">햄토리 테스트</h1>
         <p class="subtitle">Hamtori Test</p>
       </div>
@@ -20,7 +20,7 @@ const handleStart = () => {
       <div class="description-area">
         <h2 class="main-text">나와 닮은 햄토리 캐릭터는?</h2>
         <p class="sub-text">
-          10가지 질문으로 알아보는 나의 햄토리 유형!<br>
+          13가지 질문으로 알아보는 나의 햄토리 유형!<br>
           당신은 어떤 햄토리 친구와 닮았을까요?
         </p>
       </div>
@@ -32,7 +32,7 @@ const handleStart = () => {
 
       <!-- 푸터 -->
       <p class="footer-text">
-        총 10문항 · 약 2분 소요
+        총 13문항 · 약 3분 소요
       </p>
     </div>
   </div>
@@ -61,7 +61,8 @@ const handleStart = () => {
 }
 
 .character-icon {
-  font-size: 80px;
+  width: 180px;
+  height: auto;
   margin-bottom: 16px;
   animation: bounce 2s infinite;
 }
@@ -146,7 +147,7 @@ const handleStart = () => {
   }
 
   .character-icon {
-    font-size: 60px;
+    width: 140px;
   }
 }
 </style>
